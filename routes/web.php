@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'number'], function() {
+    Route::get('/', ['as' => 'number.index', 'uses' => 'NumberController@index']);
+});
