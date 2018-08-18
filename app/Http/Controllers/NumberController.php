@@ -12,19 +12,24 @@ class NumberController extends Controller
     {
         set_time_limit(100);
         $timeStart = microtime(true);
-        $number = 1000; //(int) $request->get('number');
+        $number = 1000; //(int) $request->get('number'); // This should be in a form
+        $consecutives = [];
         
         $prime = new \App\Models\Number($number);
         $primes = $prime->getPrimes();
 
         foreach ($primes as $primeNumber) {
-            $consecutives = $prime->getConsecutivePrimes($primeNumber);
-            if ($consecutives) {
-                echo "<pre>" . print_r($consecutives, 1) . "</pre>";
-                echo __METHOD__ . ': ' . __LINE__ . "</br>";
+            $consecutive = $prime->getConsecutivePrimes($primeNumber);
+            if ($consecutive) {
+                $consecutives[] = $consecutive;
             }
         }
         
-//        return view('number.index', $data);
+        $data = [
+            'primes' => $primes,
+            'consecutives' => $consecutives
+        ];
+        
+        return view('number.index', $data);
     }
 }

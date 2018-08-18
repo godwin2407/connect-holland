@@ -82,8 +82,8 @@ class Number extends Model
                 
             } elseif ($addUp > $answerNumber) {
                 $addUpText = $answerNumber . ' = ' . implode(' + ', $addUpText);
-                echo "<pre>" . print_r($addUpText, 1) . "</pre>";
-                echo __METHOD__ . ': ' . __LINE__ . "</br>";
+//                echo "<pre>" . print_r($addUpText, 1) . "</pre>";
+//                echo __METHOD__ . ': ' . __LINE__ . "</br>";
                 break;
             }
         }
